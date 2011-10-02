@@ -1,8 +1,11 @@
 
-
+UNAME := $(shell uname)
 
 CC:=$(CXX)
-CXXFLAGS += -std=c++0x -U__STRICT_ANSI__ -O3
+CXXFLAGS += -U__STRICT_ANSI__ -O3
+ifneq ($(UNAME), Darwin)
+	CXXFLAGS += -std=c++0x
+endif
 all: bisquik
 
 .PHONY: all clean perf
